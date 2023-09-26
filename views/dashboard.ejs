@@ -1,0 +1,198 @@
+<h1>Dashboard</h1>
+
+<div class="chart-container">
+    <!-- Chart 1: Monthly Purchases Chart -->
+    <div class="chart">
+        <h2>Monthly Purchases</h2>
+        <canvas id="monthlyPurchasesChart"></canvas>
+    </div>
+
+    <!-- Chart 2: Monthly Sales Chart -->
+    <div class="chart">
+        <h2>Monthly Sales</h2>
+        <canvas id="monthlySalesChart"></canvas>
+    </div>
+
+    <!-- Chart 3: Monthly Expenses Chart -->
+    <div class="chart">
+        <h2>Monthly Expenses</h2>
+        <canvas id="monthlyExpensesChart"></canvas>
+    </div>
+
+    <!-- Chart 4: Monthly Gross Profit Chart -->
+    <div class="chart">
+        <h2>Monthly Gross Profit</h2>
+        <canvas id="monthlyGrossProfitChart"></canvas>
+    </div>
+
+    <!-- Chart 5: Monthly Net Profit Chart -->
+    <div class="chart">
+        <h2>Monthly Net Profit</h2>
+        <canvas id="monthlyNetProfitChart"></canvas>
+    </div>
+
+    <!-- Chart 6: Revenue Growth Chart -->
+    <div class="chart">
+        <h2>Revenue Growth</h2>
+        <canvas id="revenueGrowthChart"></canvas>
+    </div>
+</div>
+
+<!-- Currency Exchange Rate -->
+<div class="currency">
+    <h2>Currency (MWK)</h2>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // JavaScript for creating and updating the charts
+    const dummyData = <%- JSON.stringify(dummy_data) %>;  //This is VS Code issue not recognizing ejs tags
+
+    const backgroundColor = [
+            'rgba(255, 99, 132, 0.5)',   // Color for Jan
+            'rgba(75, 192, 192, 0.5)',   // Color for Feb
+            'rgba(255, 206, 86, 0.5)',   // Color for Mar
+            'rgba(54, 162, 235, 0.2)',   // Color for Apr
+            'rgba(153, 102, 255, 0.5)'  // Color for May
+        ];
+
+        borderColor = [
+            'rgba(255, 99, 132, 1)',    // Border Color for Jan
+            'rgba(75, 192, 192, 1)',    // Border Color for Feb
+            'rgba(255, 206, 86, 1)',    // Border Color for Mar
+            'rgba(54, 162, 235, 1)',    // Border Color for Apr
+            'rgba(153, 102, 255, 1)'   // Border Color for May
+        ];
+    
+
+    // Extract data from the dummyData object
+    const monthlyPurchasesData = {
+    labels: dummyData.monthlyPurchasesData.map(item => item.month),
+    datasets: [{
+        data: dummyData.monthlyPurchasesData.map(item => item.purchases),
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+    }]
+};
+
+const monthlySalesData = {
+    labels: dummyData.monthlySalesData.map(item => item.month),
+    datasets: [{
+        data: dummyData.monthlySalesData.map(item => item.sales),
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+    }]
+};
+
+    const monthlyExpensesData = {
+        labels: dummyData.monthlyExpensesData.map(item => item.month),
+        datasets: [{
+            data: dummyData.monthlyExpensesData.map(item => item.expenses),
+            backgroundColor: backgroundColor
+        }]
+    };
+
+    const monthlyGrossProfitData = {
+        labels: dummyData.monthlyGrossProfitData.map(item => item.month),
+    datasets: [{
+        label: 'Monthly Gross Profit (Bubble Chart)',
+        data: dummyData.monthlyGrossProfitData.map(item => ({
+            x: item.month,            // X-axis value (month)
+            y: item.grossProfit,      // Y-axis value (gross profit)
+            r: item.grossProfit / 1000, // Radius of the bubble (scaled for better visualization)
+        })),
+        backgroundColor: backgroundColor,  // Use the same colors as other charts
+        borderColor: borderColor,
+        borderWidth: 1,
+    }]
+    };
+
+    const monthlyNetProfitData = {
+    labels: dummyData.monthlyNetProfitData.map(item => item.month),
+    datasets: [{
+        label: 'Monthly Net Profit',
+        data: dummyData.monthlyNetProfitData.map(item => item.netProfit),
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        borderWidth: 1
+    }]
+};
+
+
+    const revenueGrowthData = {
+        labels: dummyData.revenueGrowthData.map(item => item.month),
+        datasets: [{
+            label: 'Revenue Growth Rate (%)',
+            data: dummyData.revenueGrowthData.map(item => item.growthRate),
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+        }]
+    };
+
+    // Create the charts
+    const monthlyPurchasesChart = new Chart(document.getElementById('monthlyPurchasesChart'), {
+        type: 'polarArea',
+        data: monthlyPurchasesData
+    });
+
+
+    const monthlySalesChart = new Chart(document.getElementById('monthlySalesChart'), {
+        type: 'pie',
+        data: monthlySalesData
+    });
+
+    const monthlyExpensesChart = new Chart(document.getElementById('monthlyExpensesChart'), {
+        type: 'doughnut',
+        data: monthlyExpensesData
+    });
+
+
+    const monthlyGrossProfitChart = new Chart(document.getElementById('monthlyGrossProfitChart'), {
+        type: 'bubble',
+        data: monthlyGrossProfitData,
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    type: 'category', 
+                    position: 'bottom',
+                },
+                y: {
+                    type: 'linear',    
+                    position: 'left',
+                },
+            },
+        },
+    });
+
+    const monthlyNetProfitChart = new Chart(document.getElementById('monthlyNetProfitChart'), {
+    type: 'bar',
+    data: monthlyNetProfitData,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+    const revenueGrowthChart = new Chart(document.getElementById('revenueGrowthChart'), {
+    type: 'line',
+    data: revenueGrowthData,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>

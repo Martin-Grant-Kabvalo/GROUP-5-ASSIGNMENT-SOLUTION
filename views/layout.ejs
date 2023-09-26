@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-header">
+            <a href="/"><i class="fas fa-cogs fa-3x logo"></i></a>
+            <a href="/"><div class="name">Workflow</div></a>
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="/dashboard" class="<%= typeof activeDashboard !== 'undefined' && activeDashboard ? 'active' : '' %>">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a href="#">
+                <i class="fas fa-users"></i> Team
+            </a>
+            <a href="#">
+                <i class="fas fa-folder"></i> Projects
+            </a>
+            <a href="#">
+                <i class="fas fa-calendar"></i> Calendar
+            </a>
+            <a href="#">
+                <i class="fas fa-file"></i> Documents
+            </a>
+            <a href="#">
+                <i class="fas fa-chart-bar"></i> Reports
+            </a>
+        </div>
+       
+    </div>
+    <div class="main-content">
+        <div class="top-section">
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+                
+            </div>
+            <div class="user-info">
+                <i class="far fa-bell"></i>
+                <img src="img/profile.jpg" alt="Profile Picture" class="profile-pic">
+            </div>
+        </div>
+        <div class="actual-content">
+           <%- body %>
+        </div>
+    </div>
+</body>
+</html>
