@@ -1,0 +1,167 @@
+/* For the top section of the Grades page */
+.grades-container {
+    padding: .2rem;
+    background-color: #f4f5f7;
+    height: 94vh;
+    overflow-y: auto;
+}
+
+.grades-container select {
+    width: 15rem; 
+}
+
+.grades-top-section {
+    background-color:  #43369f;
+    padding: .8rem;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grades-top-section h2 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.dropdowns {
+    display: flex;
+    align-items: center;
+}
+
+.dropdowns select {
+    padding: 0.3125rem;
+    margin-right: 0.625rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+}
+
+#addGradesButton {
+    background-color: #4aca39;
+    color: #fff;
+    border: none;
+    padding: 0.625rem 1.2rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+}
+
+/* For the table section of the Grades page */
+.grades-table-section {
+    margin-top: 1.25rem;
+}
+
+.grades-table-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grades-table-section th,
+.grades-table-section td {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+    text-align: center;
+}
+
+.grades-table-section th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+
+
+/* ADD GRADES MODAL */
+.grades-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.grades-modal-content {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 50rem;
+    margin: 10% auto;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+#modalTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+}
+
+th, td {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button#submitGradesButton {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    margin-right: 0.625rem;
+}
+
+/* Style for the Close button */
+button#closeModal {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+}
+
+button#closeModal:hover {
+    background-color: red;
+}
+
+button#submitGradesButton:hover {
+    background-color: #0004ff;
+}
+.custom-input {
+    height: 1.875rem;
+    text-align: center;
+    width: 2.5rem;
+}
+
+#editScore {
+    height: 1.875rem;
+    width: 2.5rem;
+}
+
+#discardGradeButton {
+    background-color: #ccc;
+}
+#discardGradeButton:hover {
+    background-color: red;
+}

@@ -1,46 +1,46 @@
 <h1>Dashboard</h1>
 
 <div class="chart-container">
-    <!-- Chart 1: Monthly Purchases Chart -->
+    <!-- Chart 1: Students Per Class Chart -->
     <div class="chart">
-        <h2>Monthly Purchases</h2>
-        <canvas id="monthlyPurchasesChart"></canvas>
+        <h2>Students Per Class</h2>
+        <canvas id="studentsPerClass"></canvas>
     </div>
 
-    <!-- Chart 2: Monthly Sales Chart -->
+    <!-- Chart 2: Module Assessments Per Class Chart -->
     <div class="chart">
-        <h2>Monthly Sales</h2>
-        <canvas id="monthlySalesChart"></canvas>
+        <h2>Module Assessments Per Class</h2>
+        <canvas id="moduleAssessmentsPerClass"></canvas>
     </div>
 
-    <!-- Chart 3: Monthly Expenses Chart -->
+    <!-- Chart 3: Gender Based Performance Chart -->
     <div class="chart">
-        <h2>Monthly Expenses</h2>
-        <canvas id="monthlyExpensesChart"></canvas>
+        <h2>Gender Based Performance</h2>
+        <canvas id="genderPerformanceComparison"></canvas>
     </div>
 
-    <!-- Chart 4: Monthly Gross Profit Chart -->
+    <!-- Chart 4: Top Performers Chart -->
     <div class="chart">
-        <h2>Monthly Gross Profit</h2>
-        <canvas id="monthlyGrossProfitChart"></canvas>
+        <h2>Top Performers</h2>
+        <canvas id="topPerformers"></canvas>
     </div>
 
-    <!-- Chart 5: Monthly Net Profit Chart -->
+    <!-- Chart 5: Top Performing Classes Chart -->
     <div class="chart">
-        <h2>Monthly Net Profit</h2>
-        <canvas id="monthlyNetProfitChart"></canvas>
+        <h2>Top Performing Classes</h2>
+        <canvas id="topPerformingClasses"></canvas>
     </div>
 
-    <!-- Chart 6: Revenue Growth Chart -->
+    <!-- Chart 6: Module Performance Chart -->
     <div class="chart">
-        <h2>Revenue Growth</h2>
-        <canvas id="revenueGrowthChart"></canvas>
+        <h2>Modules Performance</h2>
+        <canvas id="performanceTrend"></canvas>
     </div>
 </div>
 
 <!-- Currency Exchange Rate -->
-<div class="currency">
-    <h2>Currency (MWK)</h2>
+<div class="smis">
+    <h2>Copyright &copy; Group 5</h2>
 </div>
 
 
@@ -48,151 +48,187 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // JavaScript for creating and updating the charts
-    const dummyData = <%- JSON.stringify(dummy_data) %>;  //This is VS Code issue not recognizing ejs tags
+    const data = <%- JSON.stringify(dashboardData) %>;  //This is VS Code issue not recognizing ejs tags
+    console.log(data);
+    const studentsPerClass = data[0];
+    const assessmentsPerClassPerModule = data[1];
+    const perfomanceTrend = data[2];
+    const topPerformingClasses = data[3];
+    const genderPerformance = data[4];
+    const topPerformers = data[5]
 
     const backgroundColor = [
-            'rgba(255, 99, 132, 0.5)',   // Color for Jan
-            'rgba(75, 192, 192, 0.5)',   // Color for Feb
-            'rgba(255, 206, 86, 0.5)',   // Color for Mar
-            'rgba(54, 162, 235, 0.2)',   // Color for Apr
-            'rgba(153, 102, 255, 0.5)'  // Color for May
+            'rgba(255, 99, 132, 0.5)',  
+            'rgba(75, 192, 192, 0.5)',   
+            'rgba(255, 206, 86, 0.5)',   
+            'rgba(54, 162, 235, 0.2)',   
+            'rgba(153, 102, 255, 0.5)'  
         ];
 
         borderColor = [
-            'rgba(255, 99, 132, 1)',    // Border Color for Jan
-            'rgba(75, 192, 192, 1)',    // Border Color for Feb
-            'rgba(255, 206, 86, 1)',    // Border Color for Mar
-            'rgba(54, 162, 235, 1)',    // Border Color for Apr
-            'rgba(153, 102, 255, 1)'   // Border Color for May
+            'rgba(255, 99, 132, 1)',    
+            'rgba(75, 192, 192, 1)',   
+            'rgba(255, 206, 86, 1)',   
+            'rgba(54, 162, 235, 1)',    
+            'rgba(153, 102, 255, 1)'   
         ];
     
 
     // Extract data from the dummyData object
-    const monthlyPurchasesData = {
-    labels: dummyData.monthlyPurchasesData.map(item => item.month),
-    datasets: [{
-        data: dummyData.monthlyPurchasesData.map(item => item.purchases),
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-    }]
-};
-
-const monthlySalesData = {
-    labels: dummyData.monthlySalesData.map(item => item.month),
-    datasets: [{
-        data: dummyData.monthlySalesData.map(item => item.sales),
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-    }]
-};
-
-    const monthlyExpensesData = {
-        labels: dummyData.monthlyExpensesData.map(item => item.month),
+    const studentsPerClassData = {
+        labels: studentsPerClass.map(item => item.class),
         datasets: [{
-            data: dummyData.monthlyExpensesData.map(item => item.expenses),
+            data: studentsPerClass.map(item => item.number_of_students),
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            borderWidth: 1
+        }]
+    };
+
+    const assessmentsPerClassPerModuleData = {
+        labels: assessmentsPerClassPerModule.map(item => `${item.class} - ${item.module}`),
+        datasets: [{
+            data: assessmentsPerClassPerModule.map(item => item.totalAssessments),
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            borderWidth: 1
+        }]
+    };
+
+    const perfomanceTrendData = {
+        labels: perfomanceTrend.map(item => `${item.module}`),
+        datasets: [{
+            label: 'Performance Trend',
+            data: perfomanceTrend.map(item => item.averagePerformance),
             backgroundColor: backgroundColor
         }]
     };
 
-    const monthlyGrossProfitData = {
-        labels: dummyData.monthlyGrossProfitData.map(item => item.month),
-    datasets: [{
-        label: 'Monthly Gross Profit (Bubble Chart)',
-        data: dummyData.monthlyGrossProfitData.map(item => ({
-            x: item.month,            // X-axis value (month)
-            y: item.grossProfit,      // Y-axis value (gross profit)
-            r: item.grossProfit / 1000, // Radius of the bubble (scaled for better visualization)
-        })),
-        backgroundColor: backgroundColor,  // Use the same colors as other charts
-        borderColor: borderColor,
-        borderWidth: 1,
-    }]
-    };
-
-    const monthlyNetProfitData = {
-    labels: dummyData.monthlyNetProfitData.map(item => item.month),
-    datasets: [{
-        label: 'Monthly Net Profit',
-        data: dummyData.monthlyNetProfitData.map(item => item.netProfit),
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: 1
-    }]
-};
-
-
-    const revenueGrowthData = {
-        labels: dummyData.revenueGrowthData.map(item => item.month),
+    const topPerformersData = {
+            labels: topPerformers.map(item => item.regNo),
         datasets: [{
-            label: 'Revenue Growth Rate (%)',
-            data: dummyData.revenueGrowthData.map(item => item.growthRate),
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 2,
-            fill: false
+            label: 'Top Performers (Bubble Chart)',
+            data: topPerformers.map(item => ({
+                x: item.regNo,            // X-axis value (regNo)
+                y: item.averageScore,      // Y-axis value (averageScore )
+                r: item.averageScore / 5, // Radius of the bubble (scaled for better visualization)
+            })),
+            backgroundColor: backgroundColor, 
+            borderColor: borderColor,
+            borderWidth: 1,
+        }]
+        };
+
+    const topPerformingClassesData = {
+        labels: topPerformingClasses.map(item => item.class),
+        datasets: [{
+            label: 'Top Performing Classes',
+            data: topPerformingClasses.map(item => item.averageScore),
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            borderWidth: 1
         }]
     };
 
-    // Create the charts
-    const monthlyPurchasesChart = new Chart(document.getElementById('monthlyPurchasesChart'), {
+    const genderPerformanceData = {
+        labels: genderPerformance.map(item => item.gender),
+        datasets: [{
+            data: genderPerformance.map(item => item.averagePerformance),
+            backgroundColor: backgroundColor
+        }]
+    };
+
+    const studentsPerClassChart = new Chart(document.getElementById('studentsPerClass'), {
         type: 'polarArea',
-        data: monthlyPurchasesData
+        data: studentsPerClassData
     });
 
-
-    const monthlySalesChart = new Chart(document.getElementById('monthlySalesChart'), {
+    const assessmentsPerClassPerModuleChart = new Chart(document.getElementById('moduleAssessmentsPerClass'), {
         type: 'pie',
-        data: monthlySalesData
+        data: assessmentsPerClassPerModuleData
     });
 
-    const monthlyExpensesChart = new Chart(document.getElementById('monthlyExpensesChart'), {
+    const genderPerformancehart = new Chart(document.getElementById('genderPerformanceComparison'), {
         type: 'doughnut',
-        data: monthlyExpensesData
+        data: genderPerformanceData
     });
 
-
-    const monthlyGrossProfitChart = new Chart(document.getElementById('monthlyGrossProfitChart'), {
-        type: 'bubble',
-        data: monthlyGrossProfitData,
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    type: 'category', 
-                    position: 'bottom',
-                },
-                y: {
-                    type: 'linear',    
-                    position: 'left',
+    const topPerformershart = new Chart(document.getElementById('topPerformers'), {
+            type: 'bubble',
+            data: topPerformersData,
+            options: {
+        responsive: true,
+        scales: {
+            x: {
+                type: 'category',
+                position: 'bottom',
+            },
+            y: {
+                type: 'linear',
+                position: 'left',
+            },
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: (context) => {
+                        const dataPoint = topPerformersData.datasets[context.datasetIndex].data[context.dataIndex];
+                        const roundedAverageScore = Math.round(dataPoint.y);
+                        const averageGradeLabel = `${roundedAverageScore}%`;
+                        return averageGradeLabel;
+                    },
                 },
             },
         },
+    },
     });
 
-    const monthlyNetProfitChart = new Chart(document.getElementById('monthlyNetProfitChart'), {
-    type: 'bar',
-    data: monthlyNetProfitData,
-    options: {
+    const topPerformingClassesChart = new Chart(document.getElementById('topPerformingClasses'), {
+        type: 'bar',
+        data: topPerformingClassesData,
+        options: {
         scales: {
             y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
+                beginAtZero: true,
+                suggestedMax: 100, 
+                ticks: {
+                    callback: function (value) {
+                        return value + '%'; 
+                    },
+                },
+            },
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        const label = context.dataset.label || '';
+                        const value = context.parsed.y || 0;
+                        const roundedValue = Math.ceil(value);
+                        return label + ': ' + roundedValue + '%';
+                    },
+                },
+            },
+        },
+    },
+    });
 
-    const revenueGrowthChart = new Chart(document.getElementById('revenueGrowthChart'), {
-    type: 'line',
-    data: revenueGrowthData,
-    options: {
+    const perfomanceTrendChart = new Chart(document.getElementById('performanceTrend'), {
+       type: 'line',
+       data: perfomanceTrendData,
+       options: {
         scales: {
             y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
+                beginAtZero: true,
+                ticks: {
+                    callback: function (value) {
+                        return value + '%'; 
+                    },
+                },
+            },
+        },
+    },
+    });
 
 
 </script>

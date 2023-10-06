@@ -1,0 +1,159 @@
+    <div id="addStudentModal" class="modal std-modal">
+        <div class="modal-content std-modal-content">
+            <h2 class="std-modal-title">Add Student</h2>
+            <form id="addStudentForm" class="std-form">
+                <div class="form-group std-form-group">
+                    <label for="regNo" class="std-label">Registration Number:</label>
+                    <input type="text" id="regNo" name="regNo" class="std-input" required>
+                </div>
+                <div class="form-group std-form-group">
+                    <label for="firstName" class="std-label">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" class="std-input" required>
+                </div>
+                <div class="form-group std-form-group">
+                    <label for="lastName" class="std-label">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" class="std-input" required>
+                </div>
+                <div class="form-group std-form-group gender">
+                    <p class="gender-label">Gender:</p>
+                    <input type="radio" id="male" name="gender" value="Male" class="std-radio" required selected>
+                    <p for="male" class="std-radio-label">Male</p>
+                    <input type="radio" id="female" name="gender" value="Female" class="std-radio" required>
+                    <p for="female" class="std-radio-label">Female</p>
+                </div>
+                <div class="form-group std-form-group">
+                    <label for="email" class="std-label">Email:</label>
+                    <input type="email" id="email" name="email" class="std-input" required>
+                </div>
+                <div class="form-group std-form-group">
+                    <label for="class" class="std-label">Class:</label>
+                    <select id="class" name="class" class="std-select" required>
+                    
+                    </select>
+                </div>
+                <div class="modal-button-container std-modal-button-container">
+                    <button class="modal-button std-modal-button" id="confirmAdd">Add</button>
+                    <button class="modal-button std-modal-button" id="cancelAdd">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END OF ADD STUDENT MODAL -->
+
+    <!-- Edit Student Modal -->
+    <div id="editStudentModal" class="std-edit-modal">
+        <div class="std-edit-modal-content">
+            <h2 class="std-edit-modal-title">Edit Student</h2>
+            <div class="std-edit-form">
+                <div class="std-edit-form-group">
+                    <label class="std-edit-label" for="editRegNo">Registration Number:</label>
+                    <input type="text" id="editRegNo" class="std-edit-input" placeholder="Registration Number" readonly>
+                </div>
+                <div class="std-edit-form-group">
+                    <label class="std-edit-label" for="editFirstName">First Name:</label>
+                    <input type="text" id="editFirstName" class="std-edit-input" placeholder="First Name">
+                </div>
+                <div class="std-edit-form-group">
+                    <label class="std-edit-label" for="editLastName">Last Name:</label>
+                    <input type="text" id="editLastName" class="std-edit-input" placeholder="Last Name">
+                </div>
+                <div class="std-edit-form-group gender-group">
+                    <p class="gender-label">Gender:</p>
+                    <div class="std-edit-radio-group">
+                        <input type="radio" name="editGender" class="std-edit-radio" id="editMale" value="Male">
+                        <p class="std-edit-radio-label">Male</p>
+                        <input type="radio" name="editGender" class="std-edit-radio" id="editFemale" value="Female">
+                        <p class="std-edit-radio-label">Female</p>
+                    </div>
+                </div>
+                <div class="std-edit-form-group">
+                    <label class="std-edit-label" for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" class="std-edit-input" placeholder="Email">
+                </div>
+                <div class="std-edit-form-group">
+                    <label class="std-edit-label" for="editClass">Class:</label>
+                    <select id="editClass" class="std-edit-select">
+                        <!-- Options for class selection will be dynamically populated -->
+                    </select>
+                </div>
+            </div>
+            <div class="std-edit-modal-button-container">
+                <button id="updateStudent" class="std-edit-modal-button">Update</button>
+                <button id="cancelEdit" class="std-edit-modal-button" onclick="closeEditStudentModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Edit Student Modal -->
+
+    <!-- DELETE STUDENT MODAL -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <p class="message" id="deleteMessage">Your message goes here.</p>
+            <button class="modal-button" id="confirmDelete">Confirm</button>
+            <button class="modal-button" id="cancelDelete">Cancel</button>
+        </div>
+    </div>
+    <!-- END OF DELETE STUDENT MODAL -->
+
+    <!-- SEND EMAIL MODAL -->
+    <div id="emailModal" class="email-modal">
+        <div class="email-modal-content">
+            <span class="email-modal-close" id="closeEmailModal">&times;</span>
+            <h2>Compose Email</h2>
+            <form id="emailForm" class="email-form">
+                <label for="recipient" class="email-label">Recipient:</label>
+                <input type="email" id="recipient" name="recipient" class="email-input" readonly required>
+                <label for="subject" class="email-label">Subject:</label>
+                <input type="text" id="subject" name="subject" class="email-input" required>
+                <label for="message" class="email-label">Message:</label>
+                <textarea id="message" name="message" rows="6" class="email-textarea" required></textarea>
+                <button type="submit" id="sendEmailButton" class="email-button">Send Email</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="title-and-button">
+        <h2>Student</h2>
+        <button class="add-student-button"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <div class="entries-and-search">
+        <div class="entries">
+            <p>Show</p>
+            <input type="number" value="10">
+            <p>Entries</p>
+        </div>
+        <div class="search">
+            <p>Search:</p>
+            <input type="text" placeholder="Search...">
+        </div>
+    </div>
+    <table id="studentsTable">
+        <thead>
+            <tr>
+                <th>Reg No</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="studentList">
+            
+        </tbody>
+    </table>
+    <div class="bottom-section">
+        <div class="print-button-container">
+            <button class="print-button" id="printStudents">Print Students</button>
+        </div>
+        <div class="pagination">
+            <button class="previous-button">Previous</button>
+            <span class="tab-number">1</span>
+            <button class="next-button">Next</button>
+        </div>
+    </div>
+
+    <script src="js/students.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>

@@ -1,0 +1,64 @@
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Edit Class</h2>
+        <label for="editClassCode">Class Code:</label>
+        <input type="text" id="editClassCode" name="editClassCode" readonly>
+        <br>
+        <label for="editClassName">Class Name:</label>
+        <input type="text" id="editClassName" name="editClassName">
+        <br>
+        <div class="button-container">
+            <button id="updateClass">Update</button>
+            <button id="discardEdit">Discard</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <p class="message" id="deleteMessage">Your message goes here.</p>
+        <button class="modal-button" id="confirmDelete">Confirm</button>
+        <button class="modal-button" id="cancelDelete">Cancel</button>
+      </div>
+</div>
+<div class="title-bar">
+    <h1>Classes</h1>
+</div>
+<div class="page-content">
+    <div class="left-section">
+        <div class="section-title">Add Class</div>
+        <form id="addClassForm">
+            <div class="form-group">
+                <label for="classCode">Class Code:</label>
+                <input type="text" id="classCode" name="classCode" required>
+            </div>
+            <div class="form-group">
+                <label for="className">Class Name:</label>
+                <input type="text" id="className" name="className" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="addClassButton">
+                    <i class="fas fa-plus"></i> Add Class
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="right-section">
+        <div class="section-title">Classes List</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Class Code</th>
+                    <th>Class Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="classList">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/classes.js"></script>
+

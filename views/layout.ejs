@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="css/students.css?v=1.0">
+    <link rel="stylesheet" href="css/assessments.css?v=1.0">
+    <link rel="stylesheet" href="css/grades.css?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title><%= title %></title>
 </head>
@@ -20,20 +23,20 @@
             <a href="/dashboard" class="<%= typeof activeDashboard !== 'undefined' && activeDashboard ? 'active' : '' %>">
                 <i class="fas fa-tachometer-alt"></i> Dashboard
             </a>
-            <a href="#">
-                <i class="fas fa-users"></i> Team
+            <a href="/classes" class="<%= typeof activeClasses !== 'undefined' && activeClasses ? 'active' : '' %>">
+                <i class="fa-solid fa-house-user"></i> Classes
             </a>
-            <a href="#">
-                <i class="fas fa-folder"></i> Projects
+            <a href="/students" class="<%= typeof activeStudents !== 'undefined' && activeStudents ? 'active' : '' %>">
+                <i class="fas fa-users"></i> Students
             </a>
-            <a href="#">
-                <i class="fas fa-calendar"></i> Calendar
+            <a href="/modules" class="<%= typeof activeModules !== 'undefined' && activeModules ? 'active' : '' %>">
+                <i class="fas fa-calendar"></i> Modules
             </a>
-            <a href="#">
-                <i class="fas fa-file"></i> Documents
+            <a href="/assessments" class="<%= typeof activeAssessments !== 'undefined' && activeAssessments ? 'active' : '' %>">
+                <i class="fa-regular fa-pen-to-square"></i> Assessments
             </a>
-            <a href="#">
-                <i class="fas fa-chart-bar"></i> Reports
+            <a href="/grades" class="<%= typeof activeGrades !== 'undefined' && activeGrades ? 'active' : '' %>">
+                <i class="fas fa-chart-bar"></i> Grades
             </a>
         </div>
        

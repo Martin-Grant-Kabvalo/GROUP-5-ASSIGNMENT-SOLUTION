@@ -1,0 +1,96 @@
+<!-- ADD GRADES MODAL -->
+<div id="addGradesModal" class="grades-modal">
+    <div class="grades-modal-content">
+        <h2 id="modalTitle">Assessment Name</h2>
+        <table id="gradesTable">
+            <thead>
+                <tr>
+                    <th>RegNo</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="gradesTableBody">
+                <!-- Student data will be added here dynamically -->
+            </tbody>
+        </table>
+        <div class="modal-buttons">
+            <button id="submitGradesButton">Submit</button>
+            <button class="close-button" id="closeModal">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <p class="message" id="deleteMessage">Your message goes here.</p>
+        <button class="modal-button" id="confirmDelete">Confirm</button>
+        <button class="modal-button" id="cancelDelete">Cancel</button>
+    </div>
+</div>
+
+<!-- EDIT GRADE MODAL -->
+<!-- EDIT GRADE MODAL -->
+<div id="editGradeModal" class="grades-modal">
+    <div class="modal-content">
+        <h2>Edit Grade</h2>
+        <div class="form-group">
+            <label for="editModuleCode">Module Code:</label>
+            <input type="text" id="editModuleCode" readonly>
+        </div>
+        <div class="form-group">
+            <label for="editRegNo">Reg No:</label>
+            <input type="text" id="editRegNo" readonly>
+        </div>
+        <div class="form-group">
+            <label for="editScore">New Grade:</label>
+            <input type="number" id="editScore" min="0" max="100">
+        </div>
+        <div class="modal-buttons">
+            <button id="updateGradeButton">Update</button>
+            <button id="discardGradeButton">Discard</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="grades-container">
+    <div class="grades-top-section">
+        <h2>Enter Grades</h2>
+        <div class="dropdowns">
+            <select id="classDropdown">
+                <!-- Options dynamically populated from the database -->
+            </select>
+            <select id="moduleDropdown">
+                <!-- Options dynamically populated from the database -->
+            </select>
+            <select id="assessmentDropdown">
+                <!-- Options dynamically populated from the database -->
+            </select>
+            <button id="addGradesButton">Add Grades</button>
+        </div>
+    </div>
+    <div class="grades-table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Grade ID</th>
+                    <th>Class</th>
+                    <th>Module</th>
+                    <th>Assessment</th>
+                    <th>RegNo</th>
+                    <th>Score</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="gradesTableContent">
+                <!-- Table data dynamically filled from the database -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src="js/grades.js"></script>

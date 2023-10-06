@@ -1,0 +1,412 @@
+/* Top Section Styles */
+.title-and-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #43369f;
+    margin-bottom: 0.625rem;
+    padding: 0.5rem;
+}
+
+.title-and-button h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;   
+}
+
+.add-student-button {
+    background-color: #4aca39;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 0.625rem;
+}
+
+/* Entries and Search Styles */
+.entries-and-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.entries-and-search > .search, .entries-and-search > .entries {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+}
+.entries p,
+.search p {
+    margin-right: 0.625rem;
+}
+
+
+
+.entries input[type="number"],
+.search input[type="text"] {
+    padding: 0.3125rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+}
+
+.entries input[type="number"] {
+    width: 3.125rem;
+    margin-right: 0.625rem;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.625rem;
+}
+
+table th,
+table td {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+    text-align: center;
+}
+
+/* Bottom Section Styles */
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem;
+    background-color: #f0f0f0;
+    border-top: 0.0625rem solid #ccc;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+}
+.pagination button {
+    background-color: #fdc818;
+    color: #fff;
+    border: none;
+    border-radius: 0.3125rem;
+    padding: 0.3125rem 0.625rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.tab-number {
+    margin: 0 0.625rem;
+}
+
+
+/* Add student modal styles */
+.std-modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999; 
+}
+
+/* Styles for the modal content */
+.std-modal-content {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    width: 43.75rem;
+    padding: 1.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Styles for the modal title */
+.std-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Styles for form elements in the modal */
+.std-form {
+    text-align: left;
+}
+
+.std-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.std-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.gender {
+    display: flex;
+    align-items: center;
+}
+.gender-label {
+    font-weight: bold;
+    margin-right: 0.625rem;
+}
+
+.std-input,
+.std-select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+    outline: none;
+}
+
+
+.std-radio-label {
+    margin: 0rem 0.625rem;
+}
+
+/* Styles for modal buttons */
+.std-modal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.std-modal-button {
+    margin: 0.3125rem;
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* Style for the cancel button */
+#cancelAdd {
+    background-color: #ccc;
+}
+
+#cancelAdd:hover {
+    background-color: red;
+}
+
+/* Remove default button styles */
+.std-modal-button:focus {
+    outline: none;
+}
+
+.std-modal-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Edit Student Modal */
+.std-edit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.std-edit-modal-content {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    width: 43.75rem;
+    padding: 1.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.std-edit-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.std-edit-form {
+    text-align: left;
+}
+
+.std-edit-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.std-edit-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.std-edit-input,
+.std-edit-radio,
+.std-edit-select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+    outline: none;
+}
+
+.std-edit-radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.gender-group {
+    display: flex;
+    align-items: center;
+}
+
+
+.std-edit-radio-label {
+    margin-right: 1.25rem;
+}
+
+.std-edit-radio{
+    margin-right: 0.625rem;
+}
+
+.std-edit-modal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.std-edit-modal-button {
+    margin: 0.3125rem;
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* Style for the cancel button */
+#cancelEdit {
+    background-color: #ccc;
+}
+
+#cancelEdit:hover {
+    background-color: red;
+}
+
+/* Remove default button styles */
+.std-edit-modal-button:focus {
+    outline: none;
+}
+
+.std-edit-modal-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Email Modal */
+/* Style for the email modal container */
+.email-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Style for the email modal content */
+.email-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 1.25rem;
+    border: 0.0625rem solid #888;
+    border-radius: 0.3125rem;
+    width: 25vw;
+}
+
+/* Style for the close button */
+.email-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.email-modal-close:hover,
+.email-modal-close:focus {
+    color: #ff0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the form elements */
+.email-label {
+    font-weight: bold;
+    margin-top: 1.25rem;
+}
+
+.email-input[type="email"],
+.email-input[type="text"],
+.email-textarea {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    display: inline-block;
+    border: 0.0625rem solid #ccc;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+}
+
+.email-button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 0.3125rem;
+}
+
+.email-button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.print-button-container {
+    text-align: right;
+    margin-bottom: 0.625rem;
+}
+
+.print-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.print-button:hover {
+    background-color: #0056b3; 
+}

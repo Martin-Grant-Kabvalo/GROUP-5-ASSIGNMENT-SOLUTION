@@ -1,0 +1,91 @@
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <p class="message" id="deleteMessage">Your message goes here.</p>
+        <button class="modal-button" id="confirmDelete">Confirm</button>
+        <button class="modal-button" id="cancelDelete">Cancel</button>
+    </div>
+</div>
+
+
+<div class="asess-add-section">
+    <h2>Add Assessment</h2>
+    <form id="addAssessmentForm">
+        <div class="asess-form-group">
+            <label for="assessmentName">Assessment Name:</label>
+            <input type="text" id="assessmentName" name="assessmentName" required>
+        </div>
+        <div class="asess-form-group">
+            <label for="classSelect">Class:</label>
+            <select id="classSelect" name="classSelect" class="asess-class-list-box" required>
+                <!-- Populate this dropdown with data from the database -->
+                <!-- Add more options here -->
+            </select>
+        </div>
+        <div class="asess-form-group">
+            <label for="moduleSelect">Module:</label>
+            <select id="moduleSelect" name="moduleSelect" class="asess-module-list-box" required>
+                <!-- Populate this dropdown with data from the database -->
+                <!-- Add more options here -->
+            </select>
+        </div>
+        <div class="asess-form-group">
+            <button type="submit" id="addAssessmentButton">Add Assessment</button>
+        </div>
+    </form>
+</div>
+
+<div class="asess-view-section">
+    <h2>View Assessments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Assessment Name</th>
+                <th>Class</th>
+                <th>Module</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="assessmentList">
+            <!-- Display assessments here -->
+            <tr>
+                <td>ASSESS-01</td>
+                <td>Assessment 1</td>
+                <td>Class 1</td>
+                <td>Module 1</td>
+                <td>
+                    <button class="asess-action-edit">Edit</button>
+                    <button class="asess-action-delete">Delete</button>
+                </td>
+            </tr>
+            <!-- Add more assessment rows here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Edit Assessment Modal -->
+<div id="editAssessmentModal" class="asess-modal">
+    <div class="asess-modal-content">
+        <h2>Edit Assessment</h2>
+        <label for="editAssessmentName">Assessment Name:</label>
+        <input type="text" id="editAssessmentName" class="asess-input" required>
+        <br>
+        <label for="editClassSelect">Class:</label>
+        <select id="editClassSelect" class="asess-select" required>
+        
+        </select>
+        <br>
+        <label for="editModuleSelect">Module:</label>
+        <select id="editModuleSelect" class="asess-select" required>
+            
+        </select>
+        <div class="asess-button-container">
+            <button id="saveEdit" class="asess-modal-button">Save Changes</button>
+            <button id="discardEdit" class="asess-modal-button">Discard</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/assessments.js"></script>
